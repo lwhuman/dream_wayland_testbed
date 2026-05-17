@@ -12,7 +12,8 @@ This repository is used as a testbed to test, develop and experiment with the Wa
 - [ ] Client-side window decoration  
 - [x] Input handling (keyboard, pointer, touch)
 - [ ] Client-side auto key repeat
-- [x] Pointer locking and hiding
+- [x] Pointer locking
+- [ ] Pointer hiding
 - [x] Relative pointer motion events
 - [x] Window state update API
 - [ ] Window state query API
@@ -23,6 +24,7 @@ This repository is used as a testbed to test, develop and experiment with the Wa
 - [x] Frame done callback
 - [ ] Fractional scailing
 - [ ] Error handling
+- [x] Multi-window support
 
 ---
 
@@ -70,7 +72,14 @@ git submodule update --init --recursive
 ```
 Add the following in your project's CMakeLists.txt:
 ```cmake
+set(BUILD_TESTS OFF)
+set(DREAM_WAYCLIENTLIB_DIR ${CMAKE_BINARY_DIR}/dwclib_build)
 
 ```
 
+Finally link your executable/target with libwayclient.a:
+```cmake
+target_link_libraries(your_target PRIVATE wayclient)
+
+```
 ---
